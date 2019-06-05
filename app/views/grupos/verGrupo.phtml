@@ -1,0 +1,80 @@
+<?php 
+    $esconder = !$grupo->privado;// ?: 'd-none';
+    $button[] = [
+        "grupos/ingressarGrupo/$grupo->id",
+        'Entrar',
+        'class' => "btn btn-success $esconder",
+    ];
+    $button[] = [
+        "grupos/sairGrupo/$grupo->id",
+        'Sair',
+        'class' => "btn btn-danger",
+    ];
+?>
+<div class="page-header">
+    <h1><?= $grupo->nome ?></h1>
+</div>
+<div class="page-content">
+    <div class="row">
+        <?php echo $this->tag->image([$grupo->foto, 'class' => 'col-lg-4 col-md-6 mb-4' ]) ?>
+        <div class="col-lg-4 col-md-6">
+            <div class="mb-3 text-left">
+                <?php 
+                    echo $this->tag->textArea([
+                        'descricao',
+                        'class' => 'form-control mb-1',
+                        'value' => $grupo->descricao,
+                        'readonly' => "readonly",
+                    ])
+                ?>
+                <?php 
+                    echo $this->tag->linkTo([
+                        "http://$grupo->website",
+                        "<i class='fas fa-globe-americas'>Visitar Website</i>",
+                        false,
+                    ]);
+                ?>
+            </div>
+            <div class="mb-3">
+                <?php 
+                    echo $this->tag->textArea([
+                        'tags',
+                        'class' => 'form-control',
+                        'value' => $grupo->tags,
+                        'placeholder' => 'Clique em Editar e adicione #Tags de interesse',
+                        'readonly' => "readonly",
+                    ])
+                ?>
+            </div>
+            <div class="row p-3 justify-content-between">
+                <?php 
+                    echo ($grupo->lider == $logadoAs) ? $this->tag->linkTo(['grupos/atualizar/'.$grupo->id, 'Editar','class' => 'btn btn-info']) : '';
+                    echo $this->tag->linkTo( $button[$grupo->participa] );
+                ?>
+            </div>
+        </div>
+        <table class="table col-lg-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Membro
+                    <th>Desde de
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach( $grupo->membros AS $membro ) : ?>
+                    <tr>
+                        <td><?php echo $membro->nome ?></td>
+                        <td><?php echo $membro->dataIngresso ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+            <tfoot class="thead-dark">
+                <tr>
+                    <th>Membro
+                    <th>Desde de
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+

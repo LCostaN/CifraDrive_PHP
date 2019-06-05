@@ -1,0 +1,48 @@
+<div>
+    <?php $this->flashSession->output(); ?>
+    <div class="row mb-3 mx-auto justify-content-between">
+        <?php 
+            echo $this->tag->linkTo([
+                "musicas/versoes/$musica->idMusica",
+                '<i class="fas fa-arrow-left"> </i> Voltar',
+                'class' => 'btn btn-md btn-primary',
+            ]);
+        ?>
+        <div class="row">
+            <?php echo $this->tag->form(["musicas/tags/$musica->id", 'class="form-inline mx-auto"']) ?>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="tags" placeholder="#Tags" value="<?= $musica->tags; ?>">
+                    <input type='submit' class="btn btn-outline-success" value="Enviar">
+                </div>
+            </form>
+            <div class="btn-group mx-3" role="group">
+                <?php 
+                    echo $this->tag->linkTo([
+                        "musicas/like/$musica->id",
+                        "<i class='far fa-thumbs-up'></i>",
+                        'class' => 'btn btn-md btn-outline-secondary'
+                    ]);
+                ?>
+                <?php 
+                    echo $this->tag->linkTo([
+                        "musicas/hate/$musica->id",
+                        "<i class='w100 far fa-thumbs-down'></i>",
+                        'class' => 'btn btn-md btn-outline-secondary'
+                    ]);
+                ?>
+            </div>
+        </div>
+        <?php 
+            echo $this->tag->linkTo([
+                "musicas/download/$musica->id",
+                'Download <i class="fas fa-file-download"></i>',
+                'class' => 'btn btn-success',
+            ]);
+        ?>
+    </div>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="<?php echo $this->url->get($musica->arquivo); ?>" allowfullscreen>
+            <p>Plugin de visualização de PDF não encontrado. Faça o download para visualizar por outro aplicativo.</p>
+        </iframe>
+    </div>
+</div>

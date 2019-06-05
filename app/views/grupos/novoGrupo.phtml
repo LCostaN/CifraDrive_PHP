@@ -1,0 +1,50 @@
+<div class="page-content">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <?php echo $this->tag->form(['action' => '', 'class' => 'form col-lg-6', 'enctype' => 'multipart/form-data']); ?>
+            <h3 class="form-header"> Criar Grupo </h3>
+            <div class="form-group">
+                <label for="imagemGrupo">Foto do Grupo</label>
+                <input type="file" class="form-control-file" name="imagemGrupo" accept="image/png, image/jpg, image/jpeg">
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" value="" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <?php echo $this->tag->textArea([
+                    "descricao",
+                    "maxlength"     => 255,
+                    "placeholder"   => "(Opcional)",
+                    "value"         => "",
+                    "class"         => "form-control",
+                ]); ?>
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website</label>
+                <?php echo $this->tag->textField([
+                    "website",
+                    "placeholder"   => "(Opcional)",
+                    "class"         => "form-control",
+                    "value"         => "",
+                ]); ?>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <?php echo $this->tag->textArea([
+                    "tags",
+                    "maxlength"     => 255,
+                    "placeholder"   => "#ceia #contrição #jovem",
+                    "value"         => '',
+                    "class"         => "form-control",
+                ]); ?>
+            </div>
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="page-content">
+    <h3>Lista de Músicas</h3>
+        <?php echo $this->tag->form(['action' => '', 'class' => 'form-inline'])?>
+            <div class="input-group mb-1">
+                <input type="text" name="procurar" placeholder="Pesquisar música">
+                <input type='submit' class="btn btn-info" value="Procurar">
+            </div>
+        </form>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="col-lg-9">Nome</th>
+                    <th>Versões</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if($musicas) : ?>
+                <?php foreach($musicas AS $musica) : ?>
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("musicas/versoes/$musica->id","$musica->nome"); ?></td>
+                        <td><?php echo $musica->totalVersoes ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td> Não há resultados.</td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+            <tfoot class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Versões</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

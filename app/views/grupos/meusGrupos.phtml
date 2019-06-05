@@ -1,0 +1,36 @@
+<div class="page-content">
+    <h3 class="mb-5">Meus Grupos</h3>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="col-lg-4">Nome</th>
+                    <th class="col-lg-6">Interesses</th>
+                    <th class="col-lg-2">Membros</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if( isset($grupos) ) : ?>
+                <?php foreach($grupos AS $grupo) : ?>
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("grupos/verGrupo/$grupo->id","$grupo->nome",'style: text-decoration: none;'); ?></td>
+                        <td><?php echo $grupo->tags; ?></td>
+                        <td><?php echo $grupo->total; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr class="no-result">
+                    <td colspan=3><?php echo "Nenhum resultado encontrado" ?></td>
+                </tr>
+            <?php endif;?>
+            </tbody>
+            <tfoot class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Interesses</th>
+                    <th>Membros</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

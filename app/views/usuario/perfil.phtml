@@ -1,0 +1,49 @@
+<?php 
+    $selectedFeminino = ($usuario->sexo == 'f') ? " selected" : '';
+    $selectedMasculino = ($usuario->sexo == 'm') ? " selected" : '';
+?>
+<div class="form">
+    <h3 class="form-header">Dados de Perfil</h3>
+    <div class="row text-center">
+        <div class="col-lg-6">
+            <?php echo $this->tag->image([ $usuario->imagemPerfil, 'class' => 'mb-4 form', 'style' => "max-width: 20rem;" ]); ?>
+        </div>
+        <div class="col-lg-5">
+            <?php $this->flashSession->output(); ?>
+            <?php echo $this->tag->form(['action' => '', 'class' => 'form mx-auto', 'enctype' => 'multipart/form-data']); ?>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" value="<?= $usuario->email ?>" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" name="nome"  value="<?= $usuario->nome ?>" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="dataNasc">Data de Nascimento</label>
+                        <input type="date" class="form-control" name="dataNasc" value="<?= $usuario->dataNasc ?>">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="sexo">Sexo</label>
+                        <select name="sexo" class="form-control custom-select">
+                            <option value=""></option>
+                            <option value="m"<?= $selectedMasculino ?>>Masculino</option>
+                            <option value="f"<?= $selectedFeminino ?>>Feminino</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="avatar" class="mx-auto">Foto</label>
+                    <input type="file" class="form-control-file px-0" name="avatar" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-success" value="Atualizar">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

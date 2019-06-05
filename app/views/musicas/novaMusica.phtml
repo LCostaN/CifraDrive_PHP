@@ -1,0 +1,52 @@
+<div class="page-content">
+    <?= $this->flashSession->output(); ?>
+    <?php echo $this->tag->form(['action' => '', 'class' => 'form col-lg-5 mx-auto', 'enctype' => 'multipart/form-data']); ?>
+        <h4 class="form-header">Nova Música</h4>
+        <div class="form-group">
+            <label for="cifra">Cifra (*.PDF)</label>
+            <input type="file" class="form-control-file" name="cifra" accept="application/pdf" required>
+        </div>
+
+        <div class="form-group">
+            <label for="nome">Nome da Música</label>
+            <input type="text" class="form-control" name="nome" placeholder="Ex: A Lição" required>
+        </div>
+
+        <div class="form-group">
+            <label for="versao">Versão (Grupo - Album - etc)</label>
+            <input type="text" class="form-control" name="versao" placeholder="Ex: Oficina G3 - Além do que os Olhos Podem Ver" required>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-lg-3">
+                <label for="tom">Tom Base</label>
+                <select class="form-control custom-select" name="tom">
+                    <option value="A"  > A  </option>
+                    <option value="A#" > A# </option>
+                    <option value="B"  > B  </option>
+                    <option value="C"  > C  </option>
+                    <option value="C#" > C# </option>
+                    <option value="D"  > D  </option>
+                    <option value="D#" > D# </option>
+                    <option value="E"  > E  </option>
+                    <option value="F"  > F  </option>
+                    <option value="F#" > F# </option>
+                    <option value="G"  > G  </option>
+                    <option value="G#" > G# </option>
+                </select>
+            </div>
+
+            <div class="form-group col-lg-9">
+                <label for="tags">#Tags</label>
+                <?= 
+                    $this->tag->textField([
+                        'tags', 
+                        'placeholder' => '#Contrição #Ceia', 
+                        'class' => 'form-control',
+                        'value' => '',
+                    ]); ?>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+</div>

@@ -1,0 +1,32 @@
+<div class="col-lg-5 mx-auto">
+    <?php $this->flashSession->output(); ?>
+    <?php echo $this->tag->form(['action' => '', 'class' => 'form']); ?>
+        <h1 class="form-header">Novo Usuário</h1>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control email" name="email" placeholder="Email"/>
+        </div>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" name="nome" placeholder="Nome"/>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" class="password form-control" name="senha" placeholder="Senha"/>
+        </div>
+        <div class="form-group">
+            <label for="confirm">Confirmar Senha</label>
+            <input type="password" class="password form-control" name="confirm" placeholder="Confirme sua senha"/>
+        </div>
+        <div class="row mx-auto mb-2 justify-content-between">
+            <?php 
+                echo $this->tag->linkTo([
+                    "login",
+                    '<i class="fas fa-arrow-left"> </i> Voltar',
+                    'class' => 'btn btn-primary',
+                ]);
+            ?>
+            <button type="submit" class="btn btn-success"> Cadastrar </button>
+        </div>
+    </form>
+</div>

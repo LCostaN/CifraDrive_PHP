@@ -1,0 +1,30 @@
+<div class="page-content">
+    <h3>Lista de Versões - <?php echo $musica->nome; ?></h3>
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Tom</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($musica->versoes AS $versao) : ?>
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("musicas/verMusica/$versao->id","$versao->nome"); ?></td>
+                        <td><?php echo $versao->tomOriginal; ?></td>
+                        <td><?php echo $versao->tags; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+            <tfoot class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Tom</th>
+                    <th>Tags</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

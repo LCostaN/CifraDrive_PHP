@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="<?= $this->url->get('home'); ?>">CifraDrive</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->url->get('home'); ?>">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->url->get('usuario/perfil'); ?>">Perfil</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="grupos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grupos</a>
+            <div class="dropdown-menu" aria-labelledby="grupos">
+                <a class="dropdown-item" href="<?= $this->url->get('grupos/meusGrupos'); ?>">Meus Grupos</a>
+                <a class="dropdown-item" href="<?= $this->url->get('grupos/buscar'); ?>">Procurar</a>
+                <a class="dropdown-item" href="<?= $this->url->get('grupos/novoGrupo'); ?>">Adicionar</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="musicas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Músicas</a>
+            <div class="dropdown-menu" aria-labelledby="musicas">
+                <a class="dropdown-item" href="<?= $this->url->get('musicas/listarMusicas'); ?>">Listar</a>
+                <a class="dropdown-item" href="<?= $this->url->get('musicas/novaMusica'); ?>">Adicionar</a>
+            </div>
+        </li>
+    </ul>
+        <?php 
+            echo $this->tag->linkTo([
+                'login/logout',
+                'Sair <i class="fas fa-sign-out-alt"></i>',
+                'class' => "btn btn-outline-info my-2 my-sm-0" 
+            ]);
+        ?>
+    </div>
+</nav>
+
+<main role="main" class="container-fluid pt-3 px-4">
+    <?php echo $this->getContent(); ?>
+</main>
